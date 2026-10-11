@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="面向心脑血管常用药与慢性病用药主题，输入科普内容，获取五个模拟标题参考。">
+    <title>championleeAI · 心脑血管药品内容标题生成器</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#generator">跳转到标题生成</a>
+    <header class="site-header">
+      <nav class="navigation container" aria-label="主导航">
+        <a class="brand" href="#home" aria-label="championleeAI药品内容首页">
+          <span class="brand-icon" aria-hidden="true">+</span>
+          <span>championleeAI<span class="brand-suffix">药品内容</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="#home">首页</a>
+          <a href="#instructions">使用说明</a>
+          <a class="nav-action" href="#generator">开始生成 <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="home" class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <span class="eyebrow"><span aria-hidden="true">+</span> 常用药 · 慢性病用药 · 内容创作</span>
+        <h1 id="hero-title">心脑血管药品<br><span>内容标题生成器</span></h1>
+        <p class="hero-description">输入准备分享的药品科普内容，获取 5 个不同角度的标题参考。</p>
+        <p class="hero-detail">面向心脑血管常用药与慢性病用药主题，帮助整理表达思路。</p>
+        <div class="hero-benefits" aria-label="产品特点">
+          <span><i aria-hidden="true">✓</i> 无需登录</span>
+          <span><i aria-hidden="true">✓</i> 本地生成</span>
+          <span><i aria-hidden="true">✓</i> 模拟标题参考</span>
+        </div>
+      </section>
+
+      <section id="generator" class="workspace" aria-label="标题生成工作区">
+        <div class="panel input-panel">
+          <div class="panel-heading">
+            <span class="step" aria-hidden="true">01</span>
+            <div><h2>准备分享什么药品内容？</h2><p>写下主题、资料要点和面向的人群。</p></div>
+          </div>
+          <form id="title-form" novalidate>
+            <div class="label-row">
+              <label for="content">你的内容 <span class="required">*</span></label>
+              <div class="input-actions"><span id="character-count">0 / 1000</span><button id="clear-input" class="clear-input-button" type="button">清空输入</button></div>
+            </div>
+            <textarea id="content" name="content" rows="6" maxlength="1000" required aria-describedby="content-hint input-error" placeholder="例如：心脑血管常用药科普。整理已核实的资料，面向慢性病患者及家属分享药品信息阅读与沟通话题。"></textarea>
+            <p id="content-hint" class="field-hint">填写已核实的内容要点，避免输入姓名、病历等个人信息。</p>
+            <p id="input-error" class="input-error" role="alert" hidden></p>
+
+            <fieldset class="type-fieldset">
+              <legend>内容类型</legend>
+              <div class="type-options">
+                <label class="type-option"><input type="radio" name="contentType" value="knowledge" checked><span><b aria-hidden="true">◈</b> 知识分享</span></label>
+                <label class="type-option"><input type="radio" name="contentType" value="product"><span><b aria-hidden="true">◈</b> 药品资料</span></label>
+                <label class="type-option"><input type="radio" name="contentType" value="tutorial"><span><b aria-hidden="true">☷</b> 内容整理</span></label>
+                <label class="type-option"><input type="radio" name="contentType" value="emotion"><span><b aria-hidden="true">☀</b> 情绪共鸣</span></label>
+              </div>
+            </fieldset>
+            <button class="generate-button" type="submit"><span aria-hidden="true">✦</span> 生成药品内容标题 <span class="button-arrow" aria-hidden="true">→</span></button>
+            <p class="simulation-note"><span aria-hidden="true">ⓘ</span> 当前为模拟生成，未接入真实 AI</p>
+          </form>
+        </div>
+
+        <section class="panel results-panel" aria-labelledby="results-heading">
+          <div class="results-heading"><div><span class="section-kicker">YOUR NEXT GREAT TITLE</span><h2 id="results-heading">标题灵感</h2></div><span id="results-badge" class="results-badge">等待生成</span></div>
+          <div id="empty-state" class="empty-state">
+            <div class="empty-illustration" aria-hidden="true"><span class="small-star">✦</span><div class="paper"><span></span><span></span><span></span><b>✧</b></div><span class="large-star">✦</span></div>
+            <h3>你的下一个好标题，从这里开始</h3>
+            <p>输入内容并点击「生成药品内容标题」<br>5 个不同角度，帮你找到表达的灵感</p>
+            <span class="empty-caption">好内容，值得被看见。</span>
+          </div>
+          <ol id="title-results" class="title-results" hidden></ol>
+          <p id="result-status" class="result-status" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+      <aside class="usage-note"><span aria-hidden="true">ⓘ</span><p>仅生成表达参考，不核实药品信息，也不提供诊断或用药建议。发布前请核对资料来源与表述。</p></aside>
+      <section class="panel instructions" aria-labelledby="preparation-heading">
+        <h2 id="preparation-heading">药品内容准备</h2>
+        <div class="instruction-steps">
+          <article class="instruction-card"><span class="step" aria-hidden="true">01</span><div><h3>明确主题</h3><p>常用药科普、慢性病用药话题或患者沟通，先确定本次分享的范围。</p></div></article>
+          <article class="instruction-card"><span class="step" aria-hidden="true">02</span><div><h3>整理资料</h3><p>准备药品说明书或可靠科普来源，区分资料事实和个人感受。</p></div></article>
+          <article class="instruction-card"><span class="step" aria-hidden="true">03</span><div><h3>选择角度</h3><p>从知识、资料整理或关怀切入，避免把标题写成疗效保证。</p></div></article>
+        </div>
+      </section>
+      <section id="instructions" class="panel instructions" aria-labelledby="instructions-heading">
+        <h2 id="instructions-heading">使用说明</h2>
+        <ol class="instruction-steps">
+          <li class="instruction-card"><span class="step" aria-hidden="true">01</span><div><h3>输入内容</h3><p>输入准备发布的内容。</p></div></li>
+          <li class="instruction-card"><span class="step" aria-hidden="true">02</span><div><h3>选择风格</h3><p>选择标题风格。</p></div></li>
+          <li class="instruction-card"><span class="step" aria-hidden="true">03</span><div><h3>生成并复制</h3><p>点击生成并复制喜欢的标题。</p></div></li>
+        </ol>
+        <p class="instruction-hint">选中喜欢的标题文字即可复制。</p>
+      </section>
+    </main>
+    <footer class="site-footer container"><span>championleeAI · 药品内容</span><span>让科普表达更清晰。</span></footer>
+  </body>
+</html>
